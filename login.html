@@ -1,0 +1,731 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shamal K. | Video Editor</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #080808;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(8, 8, 8, 0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #999;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #aaa;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 8% 80px;
+            background:
+                radial-gradient(circle at 75% 40%, #222 0%, #080808 45%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .tag {
+            color: #aaa;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 13px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 120px);
+            line-height: 0.95;
+            margin-bottom: 30px;
+            letter-spacing: -5px;
+        }
+
+        .hero h1 span {
+            color: #888;
+        }
+
+        .hero p {
+            color: #aaa;
+            max-width: 600px;
+            font-size: 18px;
+            margin-bottom: 35px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: 1px solid #fff;
+            text-decoration: none;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: white;
+            color: black;
+        }
+
+        .btn.dark {
+            border-color: #444;
+            color: #aaa;
+        }
+
+        /* SECTION */
+
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .section-subtitle {
+            color: #777;
+            margin-bottom: 50px;
+        }
+
+        /* SHOWREEL */
+
+        .showreel {
+            height: 500px;
+            border: 1px solid #222;
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.04),
+                    rgba(255,255,255,0)
+                ),
+                #111;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .play {
+            width: 90px;
+            height: 90px;
+            border: 1px solid #555;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            transition: 0.3s;
+        }
+
+        .play:hover {
+            transform: scale(1.1);
+            background: white;
+            color: black;
+        }
+
+        .showreel-text {
+            position: absolute;
+            bottom: 25px;
+            left: 30px;
+            color: #888;
+            font-size: 13px;
+            letter-spacing: 2px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            height: 350px;
+            background: #111;
+            border: 1px solid #222;
+            position: relative;
+            overflow: hidden;
+            transition: 0.4s;
+        }
+
+        .project:hover {
+            transform: translateY(-8px);
+            border-color: #555;
+        }
+
+        .project-bg {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 50px;
+            font-weight: bold;
+        }
+
+        .project-info {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 25px;
+            background: linear-gradient(transparent, #080808);
+        }
+
+        .project-info h3 {
+            font-size: 24px;
+        }
+
+        .project-info p {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* SERVICES */
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .service {
+            padding: 35px;
+            border: 1px solid #222;
+            background: #0d0d0d;
+            transition: 0.3s;
+        }
+
+        .service:hover {
+            background: #151515;
+        }
+
+        .service-number {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .service h3 {
+            margin: 30px 0 15px;
+            font-size: 24px;
+        }
+
+        .service p {
+            color: #888;
+            font-size: 14px;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .skill {
+            padding: 12px 20px;
+            border: 1px solid #333;
+            color: #aaa;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text p {
+            color: #999;
+            margin-bottom: 20px;
+            font-size: 17px;
+        }
+
+        .about-card {
+            min-height: 350px;
+            background: #111;
+            border: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #444;
+            font-size: 60px;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+            background: #0d0d0d;
+        }
+
+        .contact h2 {
+            font-size: clamp(40px, 7vw, 80px);
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            color: #888;
+            margin-bottom: 35px;
+        }
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .socials a {
+            color: #aaa;
+            text-decoration: none;
+            border-bottom: 1px solid #333;
+            padding-bottom: 5px;
+        }
+
+        .socials a:hover {
+            color: white;
+        }
+
+        /* FOOTER */
+
+        footer {
+            padding: 30px 8%;
+            display: flex;
+            justify-content: space-between;
+            color: #555;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 800px) {
+
+            nav {
+                padding: 18px 5%;
+            }
+
+            nav ul {
+                display: none;
+            }
+
+            section {
+                padding: 70px 5%;
+            }
+
+            .hero {
+                padding: 120px 5% 70px;
+            }
+
+            .hero h1 {
+                letter-spacing: -3px;
+            }
+
+            .projects,
+            .services,
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .showreel {
+                height: 300px;
+            }
+
+            .project {
+                height: 280px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="logo">
+            SHAMAL<span>.</span>
+        </div>
+
+        <ul>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                Video Editor · Visual Storyteller
+            </div>
+
+            <h1>
+                I EDIT<br>
+                <span>STORIES.</span>
+            </h1>
+
+            <p>
+                I create cinematic, engaging and visually powerful
+                videos designed to make people stop, watch and remember.
+            </p>
+
+            <div class="buttons">
+                <a href="#work" class="btn">
+                    View My Work
+                </a>
+
+                <a href="#contact" class="btn dark">
+                    Let's Work Together
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- SHOWREEL -->
+
+    <section>
+
+        <div class="section-title">
+            Showreel
+        </div>
+
+        <p class="section-subtitle">
+            A short look at my editing style.
+        </p>
+
+        <div class="showreel">
+
+            <div class="play">
+                ▶
+            </div>
+
+            <div class="showreel-text">
+                SHOWREEL 2026
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PROJECTS -->
+
+    <section id="work">
+
+        <h2 class="section-title">
+            Selected Work
+        </h2>
+
+        <p class="section-subtitle">
+            A selection of cinematic and creative projects.
+        </p>
+
+        <div class="projects">
+
+            <div class="project">
+                <div class="project-bg">
+                    01
+                </div>
+
+                <div class="project-info">
+                    <h3>Travel Film</h3>
+                    <p>Cinematic Travel Edit</p>
+                </div>
+            </div>
+
+
+            <div class="project">
+                <div class="project-bg">
+                    02
+                </div>
+
+                <div class="project-info">
+                    <h3>Social Media</h3>
+                    <p>Short Form Content</p>
+                </div>
+            </div>
+
+
+            <div class="project">
+                <div class="project-bg">
+                    03
+                </div>
+
+                <div class="project-info">
+                    <h3>Commercial</h3>
+                    <p>Product & Brand Film</p>
+                </div>
+            </div>
+
+
+            <div class="project">
+                <div class="project-bg">
+                    04
+                </div>
+
+                <div class="project-info">
+                    <h3>Wedding Film</h3>
+                    <p>Cinematic Wedding Edit</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SERVICES -->
+
+    <section id="services">
+
+        <h2 class="section-title">
+            Services
+        </h2>
+
+        <p class="section-subtitle">
+            From raw footage to finished story.
+        </p>
+
+        <div class="services">
+
+            <div class="service">
+                <span class="service-number">01</span>
+
+                <h3>Video Editing</h3>
+
+                <p>
+                    Professional editing, pacing, transitions,
+                    storytelling and cinematic finishing.
+                </p>
+            </div>
+
+
+            <div class="service">
+                <span class="service-number">02</span>
+
+                <h3>Color Grading</h3>
+
+                <p>
+                    Cinematic color correction and grading
+                    to create the right mood and atmosphere.
+                </p>
+            </div>
+
+
+            <div class="service">
+                <span class="service-number">03</span>
+
+                <h3>Short Form</h3>
+
+                <p>
+                    Reels, Shorts and social media videos
+                    designed to capture attention quickly.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SKILLS -->
+
+    <section>
+
+        <h2 class="section-title">
+            Tools I Use
+        </h2>
+
+        <p class="section-subtitle">
+            Software and creative skills.
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">DaVinci Resolve</div>
+            <div class="skill">Adobe Premiere Pro</div>
+            <div class="skill">Adobe Photoshop</div>
+            <div class="skill">Color Grading</div>
+            <div class="skill">Sound Design</div>
+            <div class="skill">Motion Graphics</div>
+            <div class="skill">Cinematic Editing</div>
+            <div class="skill">Storytelling</div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <div class="about">
+
+            <div class="about-text">
+
+                <h2 class="section-title">
+                    About Me
+                </h2>
+
+                <p>
+                    I'm Shamal, a video editor and visual creative
+                    based in Kerala, India.
+                </p>
+
+                <p>
+                    I enjoy transforming raw footage into cinematic
+                    stories through editing, music, color and visual
+                    storytelling.
+                </p>
+
+                <p>
+                    My goal is simple — make every frame feel
+                    intentional.
+                </p>
+
+            </div>
+
+
+            <div class="about-card">
+                SK
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+
+    <section id="contact" class="contact">
+
+        <h2>
+            Let's Create.
+        </h2>
+
+        <p>
+            Have a project in mind? Let's turn your footage
+            into something memorable.
+        </p>
+
+        <div class="socials">
+
+            <a href="mailto:your@email.com">
+                Email
+            </a>
+
+            <a href="https://www.instagram.com/" target="_blank">
+                Instagram
+            </a>
+
+            <a href="https://www.linkedin.com/in/shamalkanu" target="_blank">
+                LinkedIn
+            </a>
+
+            <a href="https://github.com/shamal87" target="_blank">
+                GitHub
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div>
+            © 2026 Shamal K.
+        </div>
+
+        <div>
+            Video Editor · Kerala, India
+        </div>
+
+    </footer>
+
+</body>
+</html>
